@@ -1,0 +1,59 @@
+import pymysql
+
+
+def input_until_desired_char():
+    selection = input('계속 입력하시겠습니까:')
+    while selection not in ['Y', 'N']:
+        selection = input('"Y"또는 "N"로 입력해주세요:')
+    return selection
+
+
+config = {'host': '127.0.0.1', 'user': 'root', 'password': '1234', 'database': 'work', 'port': 3306, 'charset': 'utf8',
+          'use_unicode': True}
+
+try:
+
+    conn = pymysql.connect(**config)
+    cursor = conn.cursor()
+    total_profit=0
+    max_profit=0
+
+    while True:
+        name = input('강아지 이름:')
+        stay_time = int(input('머문 시간:'))
+        if (stay_time<=30):
+            profit=3000
+        elif (stay_time>30):
+            profit = int(stay_time/30)*3000+3000
+        sql = f"insert into stay(name,stay_time,profit) values('{name}',{stay_time},{profit})"
+        cursor.execute(sql)
+        conn.commit()
+        selection = input('계속 입력하시겠습니까:')
+        if (input_until_desired_char() == 'Y'):
+            continue
+        elif(input_until_desired_char() == 'N'):
+            break
+
+    sql = "select * from stay"
+    cursor.execute(sql)
+    rows = cursor.fetchall()
+
+    for r in rows:
+        print('%d %s %d %d' % r)
+        total_profit+=r[3]
+        if (r[3]>max_profit):
+            max_profit=r[3]
+    for r in rows :
+            if (r[3]==max_profit):
+                name=r[1]
+    print('검색 레코드 수 :',len(rows))
+    print('가장 큰 수익을 낸 강아지:',name)
+    print('총 수익금:',total_profit)
+
+
+except Exception as e:
+    print('db 연동 오류 : ', e)
+    conn.rollback()
+finally:
+    cursor.close()
+    conn.close()

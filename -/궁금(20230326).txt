@@ -1,0 +1,5 @@
+
+sql="""creat table goods(code int primary key, name varchar(30) not null, su int default 0, dan int default 0)"""
+cursor.execute(sql)
+
+cursor = None

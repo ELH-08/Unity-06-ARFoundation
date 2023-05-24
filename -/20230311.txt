@@ -1,0 +1,90 @@
+print("원주율=",format(3.14159,"8.3f"))
+print("금액=",format(10000,"10d"))
+print("금액=",format(1250000,"3,d"))
+
+name="홍길동"
+age=35
+price=125.456
+print("이름:%s,나이:%d,data=%.2f"%(name,age,price))
+
+
+name="홍길동"
+age=35
+price=125.456
+
+print("이름:{},나이:{},data={}".format(name,age,price))
+print("이름:{1},나이:{0},data{2}".format(age,name,price))
+
+uid=input("id input:")
+query=f"select*from member where uid={uid}"
+print(query)
+
+
+oneLine="this is one line string"
+
+print(oneLine)
+print("문자열 길이:",len(oneLine))
+print(oneLine[0:4])
+print(oneLine[:4])
+print(oneLine[:])
+print(oneLine[::2])
+
+print(oneLine[0:-1:2])
+print(oneLine[-6:-1])
+print(oneLine[-6:])
+
+substring=oneLine[-11:]
+print(substring)
+
+
+nums="123456780"
+Result=int(nums[0])+int(nums[2])+int(nums[4])+int(nums[6])
+print(int(nums[0]))
+print(Result)
+
+oneLine="this is one line string"
+print('t글자수:',oneLine.count('t'))
+
+
+cnt=tot=0
+
+dataset=[]
+while cnt<100:
+    cnt+=1
+    if cnt%3==0:
+        tot+=cnt
+        dataset.append(cnt)
+print('1~100사이 3의 배수의 합=%d'%tot)
+print('dataset=',dataset)
+
+import random
+help(random)
+
+help(random.random)
+
+r=random.random()
+print('r',r)
+
+cnt=0
+while True:
+    r=random.random()
+    print(random.random())
+    if r<0.01:
+        break
+    else:
+        cnt+=1
+print('난수 개수=',cnt)
+
+num=0
+even_total=0
+odd_total=0
+while num<=250:
+    num += 1
+    if num%2==0:
+        even_total+=num
+    elif num%2==1:
+        odd_total+=num
+print('1~250사이의 짝수의 합 : %d'%even_total,"\n",'1~250사이의 홀수의 합 : %d'%odd_total)
+
+print('path=',r'C:\\python\test')
+

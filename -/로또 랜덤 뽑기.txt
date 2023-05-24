@@ -1,0 +1,101 @@
+import random
+
+print("로또번호 1000개 출력:")
+luck_No_Arr=[]
+luck_No=[]
+lotto_No=[]
+
+
+for i in range(1000):
+
+    while True:
+        num = int(random.randint(1, 45))
+        if num in luck_No :
+            continue
+        else:
+            luck_No.append(num)
+            if (len(luck_No) == 7):
+                break
+
+    luck_No_Arr.append(luck_No)
+    sorted_luck_No_Arr = sorted(luck_No_Arr[i])
+    print(sorted_luck_No_Arr)
+    luck_No = []
+
+
+while True:
+    num = int(random.randint(1, 45))
+    if num in lotto_No:
+        continue
+    else:
+        lotto_No.append(num)
+        if (len(lotto_No)==7):
+            break
+
+sorted_arr = sorted(lotto_No[0:6])
+
+print('로또번호 :', *sorted_arr[0:6], end=' ')
+print('추가번호 :', lotto_No[6])
+
+Final_Cnt1=0
+Final_Cnt2=0
+Final_Cnt3=0
+Final_Cnt4=0
+Final_Cnt5=0
+Final_Cnt6=0
+Index1=[]
+Index2=[]
+Index3=[]
+Index4=[]
+Index5=[]
+
+for i in range(1000):
+    cnt=0
+    for num1 in luck_No_Arr[i]:
+        for num2 in sorted_arr[0:6]:
+            if (num1 == num2):
+                cnt += 1
+                if (cnt == 6):
+                    Final_Cnt1+=1
+                    Index1.append(i)
+                elif (cnt == 5 and lotto_No[6] in luck_No_Arr[i]):
+                    Final_Cnt2+=1
+                    Index2.append(i)
+                elif (cnt == 5):
+                    Final_Cnt3+=1
+                    Index3.append(i)
+                elif (cnt == 4):
+                    Final_Cnt4+=1
+                    Index4.append(i)
+                elif (cnt == 3):
+                    Final_Cnt5+=1
+                    Index5.append(i)
+
+if(Final_Cnt1>0):
+    print('가장 높은 등수는 1등이고 %d명 입니다.'%Final_Cnt1)
+    print('몇 번째 인덱스인가요 : ',*Index1)
+elif(Final_Cnt2>0):
+    print("가장 높은 등수는 2등이고 %d명 입니다."%Final_Cnt2)
+    print('몇 번째 인덱스인가요 : ',*Index2)
+elif(Final_Cnt3>0):
+    print("가장 높은 등수는 3등이고 %d명 입니다."%Final_Cnt3)
+    print('몇 번째 인덱스인가요 : ',*Index3)
+elif(Final_Cnt4>0):
+    print("가장 높은 등수는 4등이고 %d명 입니다."%Final_Cnt4)
+    print('몇 번째 인덱스인가요 : ',*Index4)
+elif(Final_Cnt5>0):
+    print("가장 높은 등수는 5등이고 %d명 입니다."%Final_Cnt5)
+    print('몇 번째 인덱스인가요 : ',*Index5)
+else:
+    print("꽝입니다")
+
+
+
+
+
+
+
+
+
+
+

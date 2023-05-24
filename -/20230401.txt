@@ -1,0 +1,23 @@
+dogs=[{'name':'뽀삐','weight':14,'dog_breed':'시바견'},{'name':'으르렁','weight':10,'dog_breed':'시바견'},
+      {'name':'나비','weight':4,'dog_breed':'푸들'},{'name':'멍멍','weight':7,'dog_breed':'닥스훈트'},
+      {'name':'스노우','weight':11,'dog_breed':'허스키'},{'name':'승환','weight':5,'dog_breed':'푸들'},
+      {'name':'덩치','weight':15,'dog_breed':'리트리버'},{'name':'황금말티즈','weight':4,'dog_breed':'말티즈'}]
+
+Total=0
+cnt=0
+max=0
+min=12
+
+for dog in dogs :
+    if (dog['weight']<12):
+        Total+=dog['weight']
+        cnt+=1
+        if(dog['weight']>max):
+            max=dog['weight']
+        elif(dog['weight']<min):
+            min=dog['weight']
+
+print('강아지 모음에 참가 가능한 12키로 미만 강아지 수는: ',cnt)
+print('강아지 모임에 참가하는 강아지들의 평균 몸무게는:',Total/cnt)
+print('강아지 모임에 참가하는 강아지들 중의 몸무게가 가장 많이 나가는 강아지는:',max)
+print('강아지 모임에 참가하는 강아지들 중의 몸무게가 가장 적게 나가는 강아지는:',min)
