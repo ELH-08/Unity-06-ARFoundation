@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation; // 자동생성?
 using UnityEngine.XR.ARSubsystems;
 
-public class MultipleImagetarget : MonoBehaviour
+public class MultipleImageTarget : MonoBehaviour
 {
     private ARTrackedImageManager trackedImageManager;
 
